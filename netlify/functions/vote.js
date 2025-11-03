@@ -1,41 +1,24 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
-)
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 export async function handler(event) {
   try {
-    const { id, choice } = JSON.parse(event.body)
+    const { id, choice } = JSON.parse(event.body);
 
-    if (!id || !choice) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Manglende data' })
-      }
-    }
-
-    const column = choice === 'A' ? 'votes_a' : 'votes_b'
-
+    const column = choice === 'A' ? 'votes_a' : 'votes_b';
     const { data, error } = await supabase
       .from('questions')
-      .update({ [column]: supabase.sql`${column} + 1` })
+      .update({ [column]: supabase.rpc ? undefined : undefined })
       .eq('id', id)
       .select()
-      .single()
+      .single();
 
-    if (error) throw error
+    if (error) throw error;
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(data)
-    }
+    return { statusCode: 200, body: JSON.stringify(data) };
   } catch (err) {
-    console.error('Fejl i vote:', err)
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: err.message })
-    }
+    console.error('Fejl i vote.js:', err);
+    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
   }
 }
