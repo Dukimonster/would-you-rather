@@ -1,9 +1,11 @@
 {
   "name": "would-you-rather",
   "version": "1.0.0",
-  "description": "Would you rather game using Netlify and Supabase",
+  "description": "Would You Rather game using Netlify and Supabase",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
-    "@supabase/supabase-js": "^2.43.4"
+    "@supabase/supabase-js": "^2.43.4",
+    "uuid": "^9.0.1"
   }
 }
