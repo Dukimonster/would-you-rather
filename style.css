@@ -27,6 +27,7 @@ main {
 }
 
 /* Spørgsmålsboks */
+/* Spørgsmålsboks */
 .box {
   display: flex;
   flex-direction: column;
@@ -39,26 +40,22 @@ main {
   max-width: 500px;
   box-shadow: 5px 5px 0 #222;
 }
+
+/* Containeren centrerer alt — spørgsmål og knap under */
 .question-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 20px; /* afstand mellem boks og knap */
-  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-/* Justér layout på større skærme */
-@media (min-width: 900px) {
-  .question-container {
-    justify-content: center; /* holder alt samlet i midten */
-  }
+/* Næste spørgsmål-knap */
+#nextBtn {
+  margin-top: 20px;
+  align-self: center;
+}
 
-  .box {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  #nextBtn {
     position: relative;
     top: 0;
     margin-left: 30px; /* hvor tæt knappen er på boksen */
