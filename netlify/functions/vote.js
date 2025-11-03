@@ -1,10 +1,41 @@
-exports.handler = async (event) => {
-  const body = JSON.parse(event.body || "{}");
-  console.log("Received vote:", body);
+import { createClient } from '@supabase/supabase-js'
 
-  return {
-    statusCode: 200,
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ success: true })
-  };
-};
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+)
+
+export async function handler(event) {
+  try {
+    const { id, choice } = JSON.parse(event.body)
+
+    if (!id || !choice) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Manglende data' })
+      }
+    }
+
+    const column = choice === 'A' ? 'votes_a' : 'votes_b'
+
+    const { data, error } = await supabase
+      .from('questions')
+      .update({ [column]: supabase.sql`${column} + 1` })
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) throw error
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify(data)
+    }
+  } catch (err) {
+    console.error('Fejl i vote:', err)
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: err.message })
+    }
+  }
+}
