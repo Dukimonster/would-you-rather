@@ -43,8 +43,16 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap; /* så den stadig ser god ud på mobil */
+  gap: 40px; /* afstand mellem boks og knap */
+  flex-wrap: wrap;
+}
+
+/* Justér placering på store skærme */
+@media (min-width: 900px) {
+  .question-container {
+    justify-content: flex-start; /* gør knappen tættere på boksen */
+    gap: 50px; /* lidt luft, men ikke for meget */
+  }
 }
 
 #nextBtn {
@@ -52,6 +60,7 @@ main {
   height: fit-content;
   margin-top: 0;
 }
+
 
 /* Valgmuligheder */
 .choice {
