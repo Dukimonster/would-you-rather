@@ -43,23 +43,28 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px; /* afstand mellem boks og knap */
+  gap: 20px; /* afstand mellem boks og knap */
   flex-wrap: wrap;
 }
 
-/* Justér placering på store skærme */
+/* Justér layout på større skærme */
 @media (min-width: 900px) {
   .question-container {
-    justify-content: flex-start; /* gør knappen tættere på boksen */
-    gap: 50px; /* lidt luft, men ikke for meget */
+    justify-content: center; /* holder alt samlet i midten */
+  }
+
+  .box {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #nextBtn {
+    position: relative;
+    top: 0;
+    margin-left: 30px; /* hvor tæt knappen er på boksen */
   }
 }
 
-#nextBtn {
-  align-self: center;
-  height: fit-content;
-  margin-top: 0;
-}
 
 
 /* Valgmuligheder */
