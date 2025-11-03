@@ -39,6 +39,19 @@ main {
   max-width: 500px;
   box-shadow: 5px 5px 0 #222;
 }
+.question-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap; /* så den stadig ser god ud på mobil */
+}
+
+#nextBtn {
+  align-self: center;
+  height: fit-content;
+  margin-top: 0;
+}
 
 /* Valgmuligheder */
 .choice {
