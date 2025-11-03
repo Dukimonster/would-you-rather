@@ -1,15 +1,37 @@
-exports.handler = async () => {
-  const questions = [
-    { id: 1, A: "Aldrig kunne grine igen", B: "Aldrig kunne sove igen", votesA: 0, votesB: 0 },
-    { id: 2, A: "Kunne tale med dyr", B: "Kunne flyve", votesA: 0, votesB: 0 },
-    { id: 3, A: "Spise pizza hver dag", B: "Aldrig spise pizza igen", votesA: 0, votesB: 0 }
-  ];
+import { createClient } from '@supabase/supabase-js'
 
-  const random = questions[Math.floor(Math.random() * questions.length)];
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+)
 
-  return {
-    statusCode: 200,
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(random)
-  };
-};
+export async function handler() {
+  try {
+    // Hent et tilfældigt spørgsmål fra databasen
+    const { data, error } = await supabase
+      .from('questions')
+      .select('*')
+      .order('random()')
+      .limit(1)
+      .single()
+
+    if (error) throw error
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        id: data.id,
+        A: data.question_a,
+        B: data.question_b,
+        votesA: data.votes_a,
+        votesB: data.votes_b
+      })
+    }
+  } catch (err) {
+    console.error('Fejl i get-question:', err)
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: err.message })
+    }
+  }
+}
