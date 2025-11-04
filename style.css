@@ -1,172 +1,161 @@
 /* === Would You Rather DK - Retro / Humoristisk Stil === */
 
 body {
-  font-family: 'Courier New', monospace;
-  background-color: #fbeec1; /* varm gul */
-  color: #222;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+font-family: 'Courier New', monospace;
+background-color: #fbeec1; /* varm gul */
+color: #222;
+text-align: center;
+margin: 0;
+padding: 0;
 }
 
 /* Header */
 header {
-  background: #ff006e;
-  color: white;
-  padding: 20px 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  font-size: 1.6rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border-bottom: 4px solid #222;
+background: #ff006e;
+color: white;
+padding: 20px 0;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+font-size: 1.6rem;
+letter-spacing: 2px;
+text-transform: uppercase;
+border-bottom: 4px solid #222;
 }
 
 /* Hovedindhold */
 main {
-  margin-top: 50px;
+margin-top: 50px;
 }
 
-/* Spørgsmålsboks */
 /* Spørgsmålsboks */
 .box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px auto;
-  background: #fff7e6;
-  padding: 30px;
-  border: 4px solid #222;
-  border-radius: 12px;
-  max-width: 500px;
-  box-shadow: 5px 5px 0 #222;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 20px auto;
+background: #fff7e6;
+padding: 30px;
+border: 4px solid #222;
+border-radius: 12px;
+max-width: 500px;
+box-shadow: 5px 5px 0 #222;
 }
-
-/* Containeren centrerer alt — spørgsmål og knap under */
 .question-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 20px;
+  flex-wrap: wrap; /* så den stadig ser god ud på mobil */
 }
 
-/* Næste spørgsmål-knap */
 #nextBtn {
-  margin-top: 20px;
   align-self: center;
+  height: fit-content;
+  margin-top: 0;
 }
-
-    position: relative;
-    top: 0;
-    margin-left: 30px; /* hvor tæt knappen er på boksen */
-  }
-}
-
-
 
 /* Valgmuligheder */
 .choice {
-  background: #ffd166;
-  margin: 12px 0;
-  padding: 20px;
-  border: 3px solid #222;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 80%;
-  transition: 0.2s;
-  font-size: 1.1rem;
-  box-shadow: 3px 3px 0 #222;
+background: #ffd166;
+margin: 12px 0;
+padding: 20px;
+border: 3px solid #222;
+border-radius: 8px;
+cursor: pointer;
+width: 80%;
+transition: 0.2s;
+font-size: 1.1rem;
+box-shadow: 3px 3px 0 #222;
 }
 
 .choice:hover {
-  background: #ffb703;
-  transform: scale(1.03);
+background: #ffb703;
+transform: scale(1.03);
 }
 
 /* "ELLER" tekst */
 .or-text {
-  font-weight: bold;
-  margin: 18px 0;
-  font-size: 1.2rem;
+font-weight: bold;
+margin: 18px 0;
+font-size: 1.2rem;
 }
 
 /* Resultatboks */
 #result-box {
-  background: #e9ffea;
-  border: 3px solid #222;
-  border-radius: 8px;
-  margin: 25px auto;
-  padding: 15px;
-  width: 70%;
-  box-shadow: 3px 3px 0 #222;
+background: #e9ffea;
+border: 3px solid #222;
+border-radius: 8px;
+margin: 25px auto;
+padding: 15px;
+width: 70%;
+box-shadow: 3px 3px 0 #222;
 }
 
 .hidden {
-  display: none;
+display: none;
 }
 
 /* Næste spørgsmål knap */
 button {
-  background: #06d6a0;
-  border: 3px solid #222;
-  padding: 12px 25px;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-  box-shadow: 4px 4px 0 #222;
-  margin-top: 25px;
+background: #06d6a0;
+border: 3px solid #222;
+padding: 12px 25px;
+font-size: 1.1rem;
+border-radius: 8px;
+cursor: pointer;
+transition: 0.2s;
+box-shadow: 4px 4px 0 #222;
+margin-top: 25px;
 }
 
 button:hover {
-  background: #118ab2;
-  color: white;
-  transform: scale(1.05);
+background: #118ab2;
+color: white;
+transform: scale(1.05);
 }
 
 /* Footer */
 footer {
-  margin-top: 80px;
-  padding: 15px 0;
-  font-size: 0.9rem;
-  color: #444;
+margin-top: 80px;
+padding: 15px 0;
+font-size: 0.9rem;
+color: #444;
 }
 /* === Responsivt design === */
 @media (max-width: 600px) {
-  header {
-    font-size: 1.2rem;
-    padding: 12px 0;
-  }
+header {
+font-size: 1.2rem;
+padding: 12px 0;
+}
 
-  main {
-    margin-top: 25px;
-  }
+main {
+margin-top: 25px;
+}
 
-  .box {
-    width: 90%;
-    padding: 20px;
-  }
+.box {
+width: 90%;
+padding: 20px;
+}
 
-  .choice {
-    width: 95%;
-    padding: 15px;
-    font-size: 1rem;
-    background: #ffd166; /* Sikrer teksten ikke forsvinder på gul baggrund */
-    color: #222;
-  }
+.choice {
+width: 95%;
+padding: 15px;
+font-size: 1rem;
+background: #ffd166; /* Sikrer teksten ikke forsvinder på gul baggrund */
+color: #222;
+}
 
-  button {
-    width: 85%;
-    font-size: 1rem;
-    padding: 10px;
-  }
+button {
+width: 85%;
+font-size: 1rem;
+padding: 10px;
+}
 
-  #result-box {
-    width: 90%;
-    font-size: 0.95rem;
-  }
+#result-box {
+width: 90%;
+font-size: 0.95rem;
+}
 
-  footer {
-    font-size: 0.8rem;
-  }
+footer {
+font-size: 0.8rem;
+}
 }
